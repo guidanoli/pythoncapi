@@ -1,36 +1,40 @@
 #include <pybind11/pybind11.h>
 
-int add(int i, int j) {
-    return i + j;
-}
-
 namespace py = pybind11;
 
+unsigned long long factorial(int n) {
+    if (n < 0) throw std::domain_error("n! for n < 0 is undefined");
+    if (n < 2) return 1;
+    return n * factorial(n-1);
+}
+
+double divide(double i, double j) {
+    if (j == 0.0) throw std::invalid_argument("Cannot divide by zero");
+    return i / j;
+}
+
 PYBIND11_MODULE(cmake_example, m) {
-    m.doc() = R"pbdoc(
-        Pybind11 example plugin
-        -----------------------
+    m.doc() = R"(
+        Pybind11 module doc
+        -------------------
 
-        .. currentmodule:: cmake_example
+        This is a Python extension module written in C++!
+    )";
 
-        .. autosummary::
-           :toctree: _generate
+    m.def("add", [](int i, int j) { return i + j; },
+        "Add two numbers");
 
-           add
-           subtract
-    )pbdoc";
+    m.def("subtract", [](int i, int j) { return i - j; },
+        "Subtract two numbers");
 
-    m.def("add", &add, R"pbdoc(
-        Add two numbers
+    m.def("multiply", [](int i, int j) { return i * j; },
+        "Multiply two numbers");
 
-        Some other explanation about the add function.
-    )pbdoc");
+    m.def("divide", &divide,
+        "Divide two numbers");
 
-    m.def("subtract", [](int i, int j) { return i - j; }, R"pbdoc(
-        Subtract two numbers
-
-        Some other explanation about the subtract function.
-    )pbdoc");
+    m.def("factorial", &factorial,
+        "Obtain the factorial of a number");
 
 #ifdef VERSION_INFO
     m.attr("__version__") = VERSION_INFO;

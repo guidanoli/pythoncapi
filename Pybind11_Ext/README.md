@@ -6,7 +6,7 @@ Pybind11 tries to solve that issue by providing a handful of headers which conta
 
 ## Requirements
 
-Since I am making use of the CMake file provided by (this repository)[https://github.com/pybind/cmake_example] (crafted from the same crew of (pybind11)[https://github.com/pybind]), the requirements are the same for the Python/C API subdirectory plus the additional requirements for the pybind11 files.
+Since I am making use of the CMake file provided by [this repository](https://github.com/pybind/cmake_example) (crafted from the same crew of [pybind11](https://github.com/pybind)), the requirements are the same for the Python/C API subdirectory plus the additional requirements for the pybind11 files.
 
 **On Unix (Linux, OS X)**
 
@@ -18,7 +18,7 @@ Since I am making use of the CMake file provided by (this repository)[https://gi
 * Visual Studio 2015 (required for all Python versions, see notes below)
 * CMake >= 3.1
 
-*Copied from (the cmake_example repository)[https://github.com/pybind/cmake_example]*
+*Copied from [the cmake_example repository](https://github.com/pybind/cmake_example)*
 
 ## Installation
 
@@ -33,4 +33,4 @@ pip install ./cmake_example
 With the `setup.py` file included in this example, the `pip install` command will
 invoke CMake and build the pybind11 module as specified in `CMakeLists.txt`.
 
-*Copied from (the cmake_example repository)[https://github.com/pybind/cmake_example]*
+*Copied from [the cmake_example repository](https://github.com/pybind/cmake_example)*
