@@ -42,3 +42,11 @@ This code was borrowed from [this repository](github.com/starnight/python-c-exte
 ## Analysis
 
 Using the API seemed quite bureaucratic at first, but I enjoyed it quite a bit. The API is really convenient and easy to use. The boilerplate code didn't bothered me that much as to the promoters of pybind11. It would of course make the life a lot easier, but for a few functions in pure C, it's not that big of a pain in the butt. Also, making it cross-version (Python 2.x and 3.x compatible) was only one preprocessor #if in the `bind.c` file.
+
+Also, adding one function to the module requires:
+* Implementing the function in C, of course
+* Adding its prototype to the header file
+* Adding it to the binding source file boilerplate + documentation string
+* Adding call to test.py for, well, testing purposes
+
+Hopefully the API extensions such as pybind11 are able to remove of that work, other than providing more compatibility with C++ features.
