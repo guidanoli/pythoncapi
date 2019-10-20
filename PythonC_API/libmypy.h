@@ -10,5 +10,8 @@
 #include <Python.h>
 
 PyObject * add(PyObject *, PyObject *);
+PyObject * subtract(PyObject *self, PyObject *args);
+PyObject * multiply(PyObject *self, PyObject *args);
+PyObject * divide(PyObject *self, PyObject *args);
 
 #endif

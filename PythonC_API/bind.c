@@ -8,6 +8,9 @@
 #include "libmypy.h"
 
 char addfunc_docs[] = "Add two numbers function.";
+char subfunc_docs[] = "Subtract two numbers function.";
+char mulfunc_docs[] = "Multiply two numbers function.";
+char divfunc_docs[] = "Divide two numbers function.";
 
 PyMethodDef helloworld_funcs[] = {
 	{
@@ -15,6 +18,24 @@ PyMethodDef helloworld_funcs[] = {
 		(PyCFunction) add,
 		METH_VARARGS,
 		addfunc_docs
+	},
+	{
+		"sub",
+		(PyCFunction) subtract,
+		METH_VARARGS,
+		subfunc_docs
+	},
+	{
+		"mul",
+		(PyCFunction) multiply,
+		METH_VARARGS,
+		mulfunc_docs
+	},
+	{
+		"div",
+		(PyCFunction) divide,
+		METH_VARARGS,
+		divfunc_docs
 	},
 	{ NULL }
 };
