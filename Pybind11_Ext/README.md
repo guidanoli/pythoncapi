@@ -26,11 +26,78 @@ Just clone this repository and pip install. Note the `--recursive` option which 
 needed for the pybind11 submodule:
 
 ```bash
-git clone --recursive https://github.com/pybind/cmake_example.git
-pip install ./cmake_example
+git clone --recursive https://github.com/guidanoli/pythoncapi.git
+python setup.py install
 ```
 
-With the `setup.py` file included in this example, the `pip install` command will
-invoke CMake and build the pybind11 module as specified in `CMakeLists.txt`.
+The `setup.py` file included in this example will invoke CMake and build the pybind11 module as specified in `CMakeLists.txt`.
 
-*Copied from [the cmake_example repository](https://github.com/pybind/cmake_example)*
+*Copied and edited from [the cmake_example repository](https://github.com/pybind/cmake_example)*
+
+## Test
+
+Just go to the /tests/ folder and run the test Python script.
+
+```bash
+python test.py
+```
+
+Or simply go to your Python interpreter and fiddle around with the functions yourself.
+
+```bash
+$ pyton
+Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20) [MSC v.1916 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import cmake_example as m
+>>> help(m)
+Help on module cmake_example:
+
+NAME
+    cmake_example
+
+DESCRIPTION
+    Pybind11 module doc
+    -------------------
+
+    This is a Python extension module written in C++!
+
+FUNCTIONS
+    add(...) method of builtins.PyCapsule instance
+        add(arg0: int, arg1: int) -> int
+
+        Add two numbers
+
+    divide(...) method of builtins.PyCapsule instance
+        divide(arg0: float, arg1: float) -> float
+
+        Divide two numbers
+
+    factorial(...) method of builtins.PyCapsule instance
+        factorial(arg0: int) -> int
+
+        Obtain the factorial of a number
+
+    multiply(...) method of builtins.PyCapsule instance
+        multiply(arg0: int, arg1: int) -> int
+
+        Multiply two numbers
+
+    subtract(...) method of builtins.PyCapsule instance
+        subtract(arg0: int, arg1: int) -> int
+
+        Subtract two numbers
+
+VERSION
+    0.0.1
+
+FILE
+    c:\users\guidanoli\appdata\local\programs\python\python37\lib\site-packages\cmake_example-0.0.1-py3.7-win-amd64.egg\cmake_example.cp37-win_amd64.pyd
+
+
+>>> m.factorial(10)
+3628800
+>>> m.divide(1,0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: Cannot divide by zero
+```
