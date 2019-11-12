@@ -57,13 +57,13 @@ class CMakeBuild(build_ext):
         subprocess.check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
 
 setup(
-    name='cmake_example',
-    version='0.0.2',
-    author='Dean Moldovan',
-    author_email='dean0x7d@gmail.com',
-    description='A test project using pybind11 and CMake',
+    name='geresim',
+    version='0.0.1',
+    author='Guilherme Dantas',
+    author_email='guidanoli@hotmail.com',
+    description='Test project for interating with Geresim using Python',
     long_description='',
-    ext_modules=[CMakeExtension('cmake_example')],
+    ext_modules=[CMakeExtension('geresim')],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
 )
