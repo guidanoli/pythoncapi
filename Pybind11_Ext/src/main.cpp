@@ -30,6 +30,26 @@ std::vector<int> fib(int n) {
   return v;
 }
 
+class Person {
+  public:
+    Person(const std::string &name) : m_name(name) {}
+    std::string getName() { return m_name; }
+  private:
+    std::string m_name;
+};
+
+class Elder : public Person {
+  public:
+    Elder(const std::string &name) : Person(name) {}
+    std::string getName() { return "Mr(s). " + Person::getName(); }
+};
+
+class Baby : public Person {
+  public:
+    Baby(const std::string &name) : Person(name) {}
+    std::string getName() { return "Little " + Person::getName(); }
+};
+
 PYBIND11_MODULE(cmake_example, m) {
     m.doc() = R"(
         Pybind11 module doc
@@ -59,6 +79,21 @@ PYBIND11_MODULE(cmake_example, m) {
 
     m.def("fib", &fib,
       "Obtain the n first numbers of the Fibonacci sequence");
+    
+    py::class_<Person> person_class(m, "Person");
+    person_class
+        .def(py::init<std::string>())
+        .def("name", &Person::getName);
+    
+    /* Either reference parent's class_ object */
+    py::class_<Elder>(m, "Elder", person_class)
+        .def(py::init<std::string>())
+        .def("name", &Elder::getName);
+    
+    /* Or reference parent's C++ class */
+    py::class_<Baby, Person>(m, "Baby")
+        .def(py::init<std::string>())
+        .def("name", &Baby::getName);
     
 #ifdef VERSION_INFO
     m.attr("__version__") = VERSION_INFO;
